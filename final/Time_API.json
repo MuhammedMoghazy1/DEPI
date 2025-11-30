@@ -1,0 +1,128 @@
+{
+  "info": {
+    "name": "Time_API_Minimal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Punch In",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/v2/attendance/punch-in",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v2",
+            "attendance",
+            "punch-in"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"note\": \"in\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status OK', function(){",
+              "   pm.expect(pm.response.code).to.be.oneOf([200,201,204]);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Punch Out",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/v2/attendance/punch-out",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v2",
+            "attendance",
+            "punch-out"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"note\": \"out\"}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status OK', function(){",
+              "   pm.expect(pm.response.code).to.be.oneOf([200,201,204]);",
+              "});"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "View Records",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{token}}"
+          }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/v2/attendance/records",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "v2",
+            "attendance",
+            "records"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test('Status OK', function(){",
+              "   pm.expect(pm.response.code).to.be.oneOf([200,201,204]);",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
